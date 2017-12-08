@@ -56,10 +56,16 @@ class LayoutRow < Liquid::Tag
       
       output += "style=\"background-image:url(#{baseUrl}/img/#{data["img"]});\">\n"
       output += "<p class=\"news-title\">#{data["title"]}</p>\n"
-      excerptHtml = post.data["excerpt"]
       
-      template = Liquid::Template.parse(" {{ \"#{excerptHtml}\" | strip_html | truncate: 80 }}")
-      excerpt = template.render
+      excerpt = ""
+
+      if data["description"]
+         excerpt = data["description"]
+      else
+        excerptHtml = post.data["excerpt"]
+        template = Liquid::Template.parse(" {{ \"#{excerptHtml}\" | strip_html | truncate: 80 }}")
+        excerpt = template.render
+      end
       
       output += "<p class=\"news-exp\">#{excerpt}</p>\n"
       output += "</div>\n"

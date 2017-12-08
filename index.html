@@ -9,14 +9,25 @@ quote-by: Krishna
   <a href="{{site.baseurl}}{{site.posts[0].url}}">
     <div class="eight columns news-piece news-piece-1 border" style="background-image: url({{site.baseurl}}/img/{{site.posts[0].img}})">
       <p class="news-title">{{site.posts[0].title}}</p>
+
+      {% if site.posts[0].description %}
+      <p class="news-exp">{{site.posts[0].description }}</p>
+      {% else %}
       <p class="news-exp">{{site.posts[0].excerpt | strip_html | truncate: 80 }}</p>
+      {% endif %}
+
     </div>
   </a>
   
   <a href="{{site.baseurl}}{{site.posts[1].url}}">
     <div class="four columns news-piece news-piece-1" style="background-image: url({{site.baseurl}}/img/{{site.posts[1].img}});">
       <p class="news-title">{{site.posts[1].title}}</p>
+
+      {% if site.posts[1].description %}
+      <p class="news-exp">{{site.posts[1].description }}</p>
+      {% else %}
       <p class="news-exp">{{site.posts[1].excerpt | strip_html | truncate: 80 }}</p>
+      {% endif %}
     </div>
   </a>
 </div>
